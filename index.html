@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+
+	<title>Visual Eloquence - Data Formats</title>
+
+	<meta name="description" content="Slides for the data formats presentation at Visual Eloquence">
+	<meta name="author" content="Jeremy Guillette">
+
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<link rel="stylesheet" href="css/reveal.min.css">
+	<link rel="stylesheet" href="css/theme/dssg.css" id="theme">
+	<link rel="stylesheet" href="plugin/accessibility/helper.css">
+	<link rel="stylesheet" href="css/fontawesome/fontawesome.css">
+	<link rel="stylesheet" href="css/fontawesome/light.css">
+
+	<!-- Theme used for syntax highlighting of code -->
+	<link rel="stylesheet" href="lib/css/zenburn.css">
+
+	<link rel="icon" href="favicon.ico">
+
+	<!-- Printing and PDF exports -->
+	<script>
+		var link = document.createElement('link');
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+		document.getElementsByTagName('head')[0].appendChild(link);
+	</script>
+
+	<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+</head>
+
+<body>
+
+	<div class="reveal">
+
+		<!-- Any section element inside of this container is displayed as a slide -->
+		<div class="slides">
+			<section>
+				<h1>Data Formats</h1>
+				<p>Jeremy Guillette<br/>FAS Academic Technology</p>
+				<aside class="notes">
+					I'm Jeremy Guillette, and before we get into the fun bits of
+					visualization, I want to take some time to talk about data formats.
+					You won't always have us to prepare nice datasets for you, so it's
+					worth spending some time thinking about the ways in which how your
+					data is formatted influence what you're able to do with it.
+				</aside>
+			</section>
+			<section>
+				<h2>Data as Construct</h2>
+				<p><strong>Data is created.</strong> The production of a dataset requires choicess about what and how to collect and how to encode.</p>
+				<p><strong>There is no such thing as "raw data"</strong></p>
+				<aside class="notes">
+
+				</aside>
+			</section>
+			<section>
+				<section>
+					<h1>Organizing a Chili Recipe</h1>
+				</section>
+				<section>
+					<h2>Unstructured Data</h2>
+					<p>For this recipe you will need two pounds of ground beef, a chopped
+						half onion, a teaspoon of ground black pepper, half a teaspoon of
+						garlic salt, and two and a half cups of tomato sauce.</p>
+				</section>
+				<section>
+					<h2>An organized list</h2>
+					<ul>
+						<li>2 pounds ground beef</li>
+						<li>1/2 onion, chopped</li>
+						<li>1 teaspoon ground black pepper</li>
+						<li>1/2 teaspoon garlic salt</li>
+						<li>2 1/2 cups tomato sauce</li>
+					</ul>
+				</section>
+				<section>
+					<h2>"Flat" data model</h2>
+					<table>
+						<tr>
+							<th>Amount</th>
+							<th>Unit</th>
+							<th>Item</th>
+							<th>State</th>
+						</tr>
+						<tr>
+							<td>2</td>
+							<td>lbs.</td>
+							<td>beef</td>
+							<td>ground</td>
+						</tr>
+						<tr>
+							<td>0.5</td>
+							<td>-</td>
+							<td>onion</td>
+							<td>chopped</td>
+						</tr>
+						<tr>
+							<td>1</td>
+							<td>tsp.</td>
+							<td>garlic salt</td>
+							<td>-</td>
+						</tr>
+						<tr>
+							<td>2.5</td>
+							<td>cups</td>
+							<td>tomato sauce</td>
+							<td>-</td>
+						</tr>
+					</table>
+				</section>
+				<section>
+					<h2>Other Data Models</h2>
+					<p>Other models exist, such as hierarchical and relational</p>
+					<p>They are more complex, and usually involve coding to produce a visualization</p>
+				</section>
+			</section>
+			<section>
+				<h2>A deeper dive</h2>
+				<ul>
+					<li><a href="https://datacarpentry.org/spreadsheets-socialsci/">Data Carpentry Workshop</a></li>
+					<li><a href="https://librarycarpentry.org/lc-spreadsheets/">Library Carpentry Workshop</a></li>
+				</ul>
+			</section>
+		</div>
+
+	</div>
+
+	<script src="lib/js/head.min.js"></script>
+	<script src="js/reveal.min.js"></script>
+
+	<script>
+		// More info https://github.com/hakimel/reveal.js#configuration
+		Reveal.initialize({
+			controls: true,
+			progress: true,
+			history: true,
+			center: true,
+
+			transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+			// More info https://github.com/hakimel/reveal.js#dependencies
+			dependencies: [{
+					src: 'lib/js/classList.js',
+					condition: function() {
+						return !document.body.classList;
+					}
+				},
+				{
+					src: 'plugin/markdown/marked.js',
+					condition: function() {
+						return !!document.querySelector('[data-markdown]');
+					}
+				},
+				{
+					src: 'plugin/markdown/markdown.js',
+					condition: function() {
+						return !!document.querySelector('[data-markdown]');
+					}
+				},
+				{
+					src: 'plugin/highlight/highlight.js',
+					async: true,
+					callback: function() {
+						hljs.initHighlightingOnLoad();
+					}
+				},
+				{
+					src: 'plugin/search/search.js',
+					async: true
+				},
+				{
+					src: 'plugin/zoom-js/zoom.js',
+					async: true
+				},
+				{
+					src: 'plugin/notes/notes.js',
+					async: true
+				},
+				{
+					src: 'plugin/accessibility/helper.js',
+					async: true,
+					contition: function() {
+						return !!document.body.classlist;
+					}
+				}
+			]
+		});
+	</script>
+
+</body>
+
+</html>
