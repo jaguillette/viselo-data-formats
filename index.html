@@ -61,18 +61,30 @@
 				<p><strong>Data is created.</strong> The production of a dataset requires choicess about what and how to collect and how to encode.</p>
 				<p><strong>There is no such thing as "raw data"</strong></p>
 				<aside class="notes">
-
+					Let's get some basics out of the way. There's no such thing as "raw
+					data" coming to us from nature. Every piece of data you find out
+					there in the world came into existence because of decisions that were
+					made by people about what to record and how to record it.
 				</aside>
 			</section>
 			<section>
 				<section>
 					<h1>Organizing a Chili Recipe</h1>
+					<aside class="notes">
+						Let's start with a simple example: a chili recipe.
+					</aside>
 				</section>
 				<section>
 					<h2>Unstructured Data</h2>
 					<p>For this recipe you will need two pounds of ground beef, a chopped
 						half onion, a teaspoon of ground black pepper, half a teaspoon of
 						garlic salt, and two and a half cups of tomato sauce.</p>
+					<aside class="notes">
+						First, we have the recipe as you might find it on a website, as
+						unstructured text. The information about what goes into the recipe
+						is there, but it's relying on the reader's ability to make sense of
+						it.
+					</aside>
 				</section>
 				<section>
 					<h2>An organized list</h2>
@@ -83,6 +95,14 @@
 						<li>1/2 teaspoon garlic salt</li>
 						<li>2 1/2 cups tomato sauce</li>
 					</ul>
+					<aside class="notes">
+						Now we're getting more organized, with all of the different
+						ingredients in the recipe separated out into their own lines. This
+						seems like a small step, but in a research project, it can be a big
+						deal. By breaking down information into a list of pieces of the
+						same sorts of thing, you're deciding what constitiutes an
+						individual datum in your dataset.
+					</aside>
 				</section>
 				<section>
 					<h2>"Flat" data model</h2>
@@ -96,8 +116,8 @@
 						<tr>
 							<td>2</td>
 							<td>lbs.</td>
-							<td>beef</td>
-							<td>ground</td>
+							<td>ground beef</td>
+							<td>-</td>
 						</tr>
 						<tr>
 							<td>0.5</td>
@@ -118,6 +138,21 @@
 							<td>-</td>
 						</tr>
 					</table>
+					<aside class="notes">
+						Now we're getting properly structured into a spreadsheet-like data
+						format. Spreadsheets are the most common way of structuring data,
+						but just because you have a spreadsheet open doesn't mean you're
+						structuring your data in a usable way. Here, we have information
+						about the ingredients to the recipe broken down into categories.
+						We've got the item separated from the amount, unit, and state of
+						the ingredient. I set up this structure with making the recipe in
+						mind, so I have items to buy at the grocery store, amounts and
+						units to tell me how much to buy, and a state to let me know what
+						I'll need to do with the items before they can be used. I've
+						separated the individual things I'm interested in into rows, and
+						decided what properties of those things I care about in this
+						mini-dataset by putting them into columns
+					</aside>
 				</section>
 				<section>
 					<h2>Other Data Models</h2>
@@ -126,11 +161,135 @@
 				</section>
 			</section>
 			<section>
+				<section>
+					<h2>Wide vs. Tall Data</h2>
+					<aside class="notes">
+						If you're using someone else's data, it might not come to you in a
+						format that's ideal for visualization and analysis. Here's a common
+						problem and some ways to deal with it.
+					</aside>
+				</section>
+				<section>
+					<h3>Wide data</h3>
+					<table>
+						<tr>
+							<th>Year</th>
+							<th>Alabama</th>
+							<th>Alaska</th>
+							<th>Arizona</th>
+							<th>Arkansas</th>
+							<th>...</th>
+						</tr>
+						<tr>
+							<td>1824</td>
+							<td>49.1</td>
+							<td>----</td>
+							<td>----</td>
+							<td>----</td>
+							<td>...</td>
+						</tr>
+						<tr>
+							<td>1828</td>
+							<td>54.6</td>
+							<td>----</td>
+							<td>----</td>
+							<td>----</td>
+							<td>...</td>
+						</tr>
+						<tr>
+							<td>1832</td>
+							<td>31.5</td>
+							<td>----</td>
+							<td>----</td>
+							<td>----</td>
+							<td>...</td>
+						</tr>
+					</table>
+					<p>46 rows by 56 columns</p>
+					<aside class="notes">
+						You might find a downloadable summary table of a dataset that looks
+						like this one. It looks like a spreadsheet, but what's the actual
+						observation represented by each row? A year that occurred, and the
+						voter turnouts of various states during that year? In our previous
+						example, an instance of an ingredient was what we were interested
+						in, and that was related to the purpose of our data structure, to
+						record information about the recipe. We had columns related to that
+						individual piece of information. Here, the individual pieces of
+						data are actually the turnout percentatges for a state in a year,
+						but they're not each represented by a row. Let's see what that
+						would look like.
+					</aside>
+				</section>
+				<section>
+					<h3>Tall data</h3>
+					<table>
+						<tr>
+							<th>Year</th>
+							<th>State</th>
+							<th>Turnout</th>
+						</tr>
+						<tr>
+							<td>1824</td>
+							<td>Alabama</td>
+							<td>49.1</td>
+						</tr>
+						<tr>
+							<td>1828</td>
+							<td>Alabama</td>
+							<td>54.6</td>
+						</tr>
+						<tr>
+							<td>1832</td>
+							<td>Alabama</td>
+							<td>31.5</td>
+						</tr>
+						<tr>
+							<td>...</td>
+							<td>...</td>
+							<td>...</td>
+						</tr>
+					</table>
+					<p>3 columns by 2341 rows</p>
+					<aside class="notes">
+						This is a different way of structuring the same information, and
+						the way the data that one group today will use is actually
+						structured. Now each row is an individual observation. We can still
+						generate that initial view using a pivot table, but from this
+						"taller" view, we can more easily generate visualizations, run
+						analyses, subset the data, and enrich each observation with
+						additional information.
+					</aside>
+				</section>
+				<section>
+					<h3>Going from wide to tall</h3>
+					<ul>
+						<li>Often referred to as "unpivot"</li>
+						<li><code>pandas.melt()</code></li>
+						<li><code>stack()</code> or <code>melt()</code> in R</li>
+					</ul>
+					<aside class="notes">
+						Since the method for going from "tall" to "wide" data is usually a
+						pivot table, the process of going from "wide" to "tall" data is
+						usually referred to as "unpivoting" or "de-pivoting". In
+						programming languages, it can also be called "melting" a dataset.
+						Python and R have dedicated methods of making this easy, but more
+						graphical programs can have a harder time. If you don't use a
+						programming language in your data preparation, you can always look
+						up "de-pivot" and the name of your preferred tool to find
+						approaches that have worked for other folks.
+					</aside>
+				</section>
+			</section>
+			<section>
 				<h2>A deeper dive</h2>
 				<ul>
 					<li><a href="https://datacarpentry.org/spreadsheets-socialsci/">Data Carpentry Workshop</a></li>
 					<li><a href="https://librarycarpentry.org/lc-spreadsheets/">Library Carpentry Workshop</a></li>
 				</ul>
+				<aside class="notes">
+					If you're interested in taking a deeper look at how to think about
+					structuring data, you can take a look at the two websites linked here.
+				</aside>
 			</section>
 		</div>
 
