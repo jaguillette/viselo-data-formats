@@ -1,8 +1,5 @@
-# DSSG Slide Template
+# Visual Eloquence Data Formats
 
-This is a template for creating presentations in [reveal.js](https://github.com/hakimel/reveal.js).
-Everything is HTML and JS, so changes to the slides can be easily tracked.
+This repo contains the slides that I use for a quick talk about data formats for the larger "Visual Eloquence" event, held fairly regularly at Harvard.
 
-To use this template, just clear out the body of `index.html` and start adding
-your own slides in `<section>` tags. See the [reveal.js repository]([reveal.js](https://github.com/hakimel/reveal.js))
-for detailed documentation setting up the slides.
+When you look at the slides via the site associated with this repo, you can hit the "S" key to see my speaker notes.
